@@ -1,5 +1,6 @@
 #include "Matrix3.h"
 #include "vector3.h"
+#include <cmath>
 
 Matrix3::Matrix3()
 {
@@ -78,3 +79,39 @@ Matrix3 Matrix3::operator*(const Matrix3& other) const
 
 	return returnMatrix;
 }
+
+Vector3 Matrix3::operator*(const Vector3 & other) const
+{
+	Vector3 returnVec;
+
+	    returnVec.x = xAxis.x * other.x + yAxis.x * other.y + zAxis.x * other.z;
+
+		returnVec.y = xAxis.y * other.x + yAxis.y * other.y + zAxis.y * other.z;
+
+		returnVec.z = xAxis.z * other.x + yAxis.z * other.y + zAxis.z * other.z;
+
+		return returnVec;
+}
+
+void Matrix3::setRotateX(float radian)
+{
+	xAxis = { 1, 0, 0 };
+	yAxis = { 0, cosf(radian), sinf(radian) };
+	zAxis = { 0, -sinf(radian), cosf(radian) };
+}
+
+void Matrix3::setRotateY(float radian)
+{
+	xAxis = { cosf(radian), 0, -sinf(radian) };
+	yAxis = { 0, 1, 0 };
+	zAxis = { sinf(radian), 0, cosf(radian) };
+}
+
+void Matrix3::setRotateZ(float radian)
+{
+	xAxis = { cosf(radian), sinf(radian), 0 };
+	yAxis = { -sinf(radian), cosf(radian), 0 };
+	zAxis = { 0, 0, 1 };
+}
+
+

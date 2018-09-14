@@ -29,6 +29,10 @@ public:
 
 	Matrix3 operator*(const Matrix3 &other) const;
 
-	
+	Vector3 operator*(const Vector3 &other) const;
+
+	void setRotateX(float radian);
+	void setRotateY(float radian);
+	void setRotateZ(float radian);
 };
 

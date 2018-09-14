@@ -1,4 +1,5 @@
-﻿  Vector4.cpp
-  vector3.cpp
+﻿  matrix2.cpp
+  matrix3.cpp
+  matrix4.cpp
   Generating Code...
   UnitTest.vcxproj -> C:\Users\Edward\Desktop\Debug\UnitTest.exe

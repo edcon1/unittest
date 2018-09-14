@@ -41,7 +41,17 @@ Matrix4::operator const float*() const
 
 Vector4 Matrix4::operator*(const Vector4 & other) const
 {
-	return Vector4();
+	Vector4 returnVec;
+
+	returnVec.x = xAxis.x * other.x + yAxis.x * other.y + zAxis.x * other.z + wAxis.x * other.w;
+
+	returnVec.y = xAxis.y * other.x + yAxis.y * other.y + zAxis.y * other.z + wAxis.y * other.w;
+
+	returnVec.z = xAxis.z * other.x + yAxis.z * other.y + zAxis.z * other.z + wAxis.z * other.w;
+
+	returnVec.w = xAxis.w * other.x + yAxis.w * other.y + zAxis.w * other.z + wAxis.w * other.w;
+
+	return returnVec;
 }
 
 Matrix4 Matrix4::operator*(const Matrix4& other) const
@@ -115,4 +125,28 @@ Matrix4 Matrix4::operator*(const Matrix4& other) const
 
 	return returnMatrix;
 
+}
+
+void Matrix4::setRotateX(float radian)
+{
+	xAxis = { 1, 0, 0, 0 };
+	yAxis = { 0, cosf(radian), sinf(radian), 0 };
+	zAxis = { 0, -sinf(radian), cosf(radian), 0 };
+	wAxis = { 0, 0, 0, 1 };
+}
+
+void Matrix4::setRotateY(float radian)
+{
+	xAxis = { cosf(radian), 0, -sinf(radian), 0 };
+	yAxis = { 0, 1, 0, 0 };
+	zAxis = { sinf(radian), 0, cosf(radian), 0 };
+	wAxis = { 0, 0, 0, 1 };
+}
+
+void Matrix4::setRotateZ(float radian)
+{
+	xAxis = { cosf(radian), sinf(radian), 0, 0};
+	yAxis = { -sinf(radian), cosf(radian), 0, 0};
+	zAxis = { 0, 0, 1, 0};
+	wAxis = { 0, 0, 0, 1 };
 }

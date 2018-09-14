@@ -56,3 +56,20 @@ Matrix2 Matrix2::operator*(const Matrix2& other) const
 	return returnMatrix;
 	
 }
+
+Vector2 Matrix2::operator*(const Vector2 & other) const
+{
+	Vector2 returnVec;
+
+	returnVec.x = xAxis.x * other.x + yAxis.x * other.y;
+
+	returnVec.y = xAxis.y * other.x + yAxis.y * other.y;
+
+	return returnVec;
+}
+
+void Matrix2::setRotate(float radian)
+{
+	xAxis = { cosf(radian), sinf(radian) };
+	yAxis = { -sinf(radian), cosf(radian) };
+}

@@ -1,5 +1,7 @@
 #pragma once
 #include "vector4.h"
+#include <cmath>
+
 class Matrix4
 {
 public:
@@ -29,5 +31,9 @@ public:
 	Vector4 operator*(const Vector4 &other) const;
 	
 	Matrix4 operator*(const Matrix4& other) const;
+
+	void setRotateX(float radian);
+	void setRotateY(float radian);
+	void setRotateZ(float radian);
 
 };
